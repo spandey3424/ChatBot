@@ -1,0 +1,133 @@
+<div class="grid grid-nogutter">
+  <div
+    class="col-4 border-round-2xl flex align-items-end flex-wrap"
+    #container
+    id="chatpanel"
+  >
+    <div class="flex justify-content-end col-2 absolute">
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        (click)="this.clearChat()"
+        matTooltip="Refresh Chat"
+        >autorenew</mat-icon
+      >
+    </div>
+    <div class="col-12 flex flex-column" #viewer style="overflow-y: auto">
+      <div id="scrollPanel" style="width: '100%'; height: 71vh">
+        <span *ngFor="let prompt of chatArray">
+          <app-user-query
+            [prompt]="prompt"
+            *ngIf="prompt.type == 'user'"
+          ></app-user-query>
+          <app-model-response
+            [prompt]="prompt"
+            *ngIf="prompt.type == 'ai'"
+          ></app-model-response>
+        </span>
+        <app-loader *ngIf="loader"></app-loader>
+        <div
+          class="flex justify-content-center align-items-center"
+          style="height: 100%; font-family: sans-serif; color: black"
+          *ngIf="chatArray.length == 0"
+        >
+          <img
+            src="https://app-5292-eus2-prejoiner-prod-web.azurewebsites.net/images/Company_Greaterthan_logo.png"            style="height: 30px; margin-bottom: 40px; margin-right: 7px"
+            alt="icon"
+          />
+          <app-loader *ngIf="loader"></app-loader>
+          <h2>Hi how can I help you today ?</h2>
+        </div>
+        <!-- <div class="col-1 border-circle w-2rem h-2rem m-2 flex align-items-center justify-content-center bg-white border-solid surface-border" style="height: 30px;" >
+          <i class="pi pi-user" style="color: #708090"></i>
+      </div>
+      <div class="col-10 col-offset-1 border-round-2xl bg-blue-50 shadow-2" style="height: 100px;"></div> -->
+      </div>
+    </div>
+    <div class="col-12 flex relative" #messageTextarea>
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        matTooltip="Add Photos"
+        >add_photo_alternate</mat-icon
+      >
+      <textarea
+        class="inputText"
+        (keydown.enter)="onClickSend()"
+        (input)="onKeyEnter()"
+        placeholder="Chat to GenAI"
+        pInputTextarea
+        autosize
+        [minRows]="1"
+        [autoResize]="true"
+        (resized)="onResized($event)"
+        [(ngModel)]="userInput"
+      >
+      </textarea>
+
+      <!-- <i class="pi pi-microphone micIcon" style="color: #708090"></i> -->
+      <mat-icon
+        class="mat-icon notranslate filled google-symbols mat-icon-no-color micIcon"
+        style="color: black"
+        fontIcon="mic"
+      ></mat-icon>
+      <!-- <p-button icon="pi pi-send" [style]="{height: '3rem'}" (onClick)="onClickSend()" [rounded]="true" [text]="true"></p-button> -->
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        (click)="onClickSend()"
+        [ngClass]="{ 'disabled-icon': !userInput }"
+        >send_spark</mat-icon
+      >
+    </div>
+  </div>
+
+  <div class="col-7 border-round-2xl" #panel id="respanel">
+    <div
+      class="flex flex-column align-content-between p-3"
+      style="height: 100%; width: 100%; font-family: sans-serif; color: black"
+    >
+      <app-info-panel
+        [infoDetails]="additionalInfo"
+        [loading]="additionalInfoLoader"
+        [type]="type"
+        [distinctLegendValues]="distinctLegendValues"
+        [distinctXaxisDataValues]="distinctXaxisDataValues"
+      >
+      </app-info-panel>
+      <div class="flex">
+        <p-toast position="bottom-center" key="bc"></p-toast>
+        <p-button
+          *ngIf="type === 'table'"
+          label="Generate Inspection Summary"
+          (click)="viewSummary()"
+          size="small"
+          severity="help"
+        ></p-button>
+      </div>
+      <div class="my-4" *ngIf="summaryLoader === true">
+        <p-progressBar
+          mode="indeterminate"
+          [style]="{ height: '6px' }"
+        ></p-progressBar>
+      </div>
+      <div class="flex justify-content-end" *ngIf="showSummary === true">
+        <p-button
+          icon="pi pi-print"
+          size="small"
+          class="flex"
+          [disabled]="true"
+          severity="warning"
+        ></p-button>
+        <p-button
+          icon="pi pi-file-export"
+          size="small"
+          [disabled]="true"
+          class="flex ml-2"
+          severity="warning"
+        ></p-button>
+      </div>
+      <app-summary-report
+        *ngIf="showSummary === true"
+        [summaryDetails]="summaryInfo"
+      ></app-summary-report>
+    </div>
+  </div>
+</div>

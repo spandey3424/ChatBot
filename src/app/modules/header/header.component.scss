@@ -1,0 +1,166 @@
+.header {
+  align-items: center;
+  background-color: #4e067c;
+  // color: #d9dee0;
+  display: flex;
+}
+ 
+.badge {
+  position: absolute;
+  right: -8px;
+  top: -1px;
+  color: #fff;
+  background: #f44336;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  transform: none;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+  transform: scale(0.6);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  font-weight: 600;
+  font-size: 12px;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  fill: currentColor;
+}
+ 
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+ 
+.title_bar {
+  height: 52px;
+  justify-content: space-between;
+}
+ 
+.menu_bar {
+  height: 48px;
+ 
+  .menu_item {
+    width: 122px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+ 
+    .mat-icon {
+      margin-left: 4px;
+    }
+  }
+}
+ 
+.search {
+  margin-right: 12px;
+  width: 135px;
+  height: 21px;
+}
+ 
+.notification_icon {
+  color: #5bc7cc;
+}
+ 
+.person_icon {
+  color: #5bc7cc;
+}
+ 
+.position_notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 9px;
+}
+ 
+.count {
+  position: absolute;
+  bottom: 22px;
+  right: 8px;
+}
+ 
+.separator {
+  height: 0.1em;
+  background-color: #0b3956;
+}
+ 
+.imageWidth {
+  height: 27px;
+}
+ 
+img,
+.menu_list {
+  margin: 0 0px 0px 55px;
+}
+ 
+.signout-button {
+  position: relative;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+}
+ 
+.profile-text-id {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: #616161;
+  font-weight: 400;
+  font-weight: 600;
+  font-style: revert;
+}
+ 
+.profile-text-name {
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+ 
+.ui-overlaypanel {
+&:before {
+    bottom: none;
+    left: unset;
+    position: unset;
+    content: unset;
+  }
+ 
+  &:after {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+  }
+}
+
+.account_icon-1 {
+  font-size:10px;
+  width:1.6rem;
+  margin-right:5px;
+  border:none;
+  background:#dbe1d7;
+  color:#35432a;
+  font-weight:500;
+  justify-content:center
+}
+.account_icon-2 {
+  justify-content:center;
+  font-size:14px;
+  height:2.2rem!important;
+  width:2.2rem;
+  margin-right:5px;
+  border:none;
+  background:#dbe1d7;
+  color:#35432a;
+  font-weight:500
+}
+.account_icon-1,
+.account_icon-2:hover {
+  border:none!important;
+  background:#dbe1d7!important;
+  color:#35432a!important
+}

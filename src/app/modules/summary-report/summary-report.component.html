@@ -1,0 +1,102 @@
+<div
+  class="col-12 py-4 px-2 my-4"
+  style="border: 1px solid #dee2e6; border-radius: 2px"
+>
+  <div
+    class="flex flex-column justify-content-start gap-2 px-2"
+    style="height: 100%; width: 100%"
+  >
+    <span
+      class="flex font-bold align-self-center justify-content-center"
+      style="width: 100%"
+    >
+      <b style="font-size: x-large">Summary</b>
+    </span>
+    <p-divider></p-divider>
+    <span>
+      <b class="font-bold">Number of Inspections performed : </b
+      >{{ summaryData.Number_of_inspections }}
+    </span>
+    <!-- <span>
+      <b class="font-bold">Number of Inspections completed on time : </b>3
+    </span>
+    <span>
+      <div style="height: 400px; overflow: auto">
+        <app-pie-chart></app-pie-chart>
+      </div>
+    </span> -->
+    <span>
+      <b class="font-bold">Last Inspection performed on :</b>
+      {{ summaryData.Last_inspection_performed }}
+    </span>
+    <span>
+      <b class="font-bold">Inspector details :</b>
+      {{ summaryData.Inspector_name }}
+    </span>
+    <span>
+      <b class="font-bold">Supervisor details :</b>
+      {{ summaryData.Supervisor_name }}
+    </span>
+    <p-divider></p-divider>
+    <span
+      class="flex font-bold align-self-start justify-content-start pt-2"
+      style="width: 100%"
+    >
+      <b style="font-size: large">Major Observations</b>
+    </span>
+    <p-divider></p-divider>
+    <span>
+      <p>Below are the major observations noted by the inspection report :</p>
+    </span>
+    <span>
+      {{ summaryData.Major_observations }}
+    </span>
+    <span>
+      <b class="font-bold">Priority - </b>
+      {{ summaryData.Priority }}
+    </span>
+    <!-- <span> <b class="font-bold">Damage Code :</b> {{summaryData.Damage_code}} </span> -->
+    <span>
+      <b class="font-bold">Damage Description :</b>
+      {{ summaryData.Damage_description }}
+    </span>
+    <p-divider></p-divider>
+    <div class="flex flex-row gap-5">
+      <div *ngFor="let item of summaryData.Image_details">
+        <div class="flex flex-column flex-wrap align-content-center justify-content-center">
+          <p-image
+            src="/load_image/{{ item[1] }}"
+            alt="Inspection Image"
+            width="300"
+            height="200"
+            [preview]="true"
+          >
+          </p-image>
+          <b>{{ item[0] }}</b>
+        </div>
+      </div>
+    </div>
+    <p-divider></p-divider>
+    <p-button
+      label="View some similar images found for this Asset"
+      (click)="loadImages()"
+      size="small"
+      [text]="true"
+    ></p-button>
+    <div *ngIf="viewSimilarImgFlag" class="flex flex-row gap-5">
+      <div *ngFor="let item of imagesArray.similar_images">
+        <div class="flex flex-column flex-wrap align-content-center justify-content-center">
+          <p-image
+            src="/load_similar_images/{{ item[1] }}"
+            alt="Inspection Image"
+            width="300"
+            height="200"
+            [preview]="true"
+          >
+          </p-image>
+          <b>{{ item[0] }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

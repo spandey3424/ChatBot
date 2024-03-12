@@ -1,0 +1,23 @@
+.responseBox {
+    min-height: 32px;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-flex: unset;
+    -webkit-flex: unset;
+    -moz-box-flex: unset;
+    -ms-flex: unset;
+    flex: unset;
+    padding: 0px;
+}
+
+.msg {
+    font-family: sans-serif;
+    padding-top: 1.6rem;
+    letter-spacing: normal;
+    white-space: pre-wrap;
+    /* width: 100%; */
+    word-break: break-word;
+}

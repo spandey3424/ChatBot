@@ -1,0 +1,11 @@
+{
+  "Number_of_inspections": "5",
+  "Inspector_name": "William Rutherford",
+  "Supervisor_name": "COLLINS, ZACHARY T",
+  "Last_inspection_performed": "3-Mar-23",
+  "Major_observations": "On XX/XX/XXXX date 3 anchor bolts were found to be broken on the bridge bearing.",
+  "Priority": "Immediate response required for the broken anchor bolts on the bridge bearing.",
+  "Damage_code": "Broken",
+  "Damage_description": "Not provided",
+  "Image_details": "[['image_title', 'file_name'], ['image_title', 'file_name']]"
+}

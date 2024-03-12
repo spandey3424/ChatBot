@@ -1,0 +1,28 @@
+:host{
+    display: flex;
+    justify-content: flex-start; 
+   
+  .autosize{
+    padding:8px;
+    font-size:12px;
+    width: 200px;
+    border-radius: 6px;
+    line-height: 14px;
+    position: relative;
+    
+    outline: none;
+    resize: none;
+  
+    box-sizing: border-box;
+    height: 32px;
+  }
+  .hidden{
+  
+    position: absolute;
+    left: -100px;
+    visibility: hidden;
+    overflow:hidden;
+  
+  }
+  }
+  

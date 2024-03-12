@@ -1,0 +1,62 @@
+<div class="content-card flex" style="background-color: #f5f0f9; padding: 10px">
+  <div
+    class="col-12 border-round-2xl flex align-items-end flex-wrap"
+    #container
+    id="chatpanel"
+  >
+    <div class="flex justify-content-end col-2 absolute">
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        (click)="this.clearChat()"
+        matTooltip="Refresh Chat"
+        >autorenew</mat-icon
+      >
+    </div>
+    <div
+      class="col-12 flex flex-column" #dialogviewer
+      style="overflow-y: auto; max-height: 50vh"
+    >
+      <div id="scrollPanel">
+        <span *ngFor="let prompt of chatArray">
+          <app-user-query
+            [prompt]="prompt"
+            *ngIf="prompt.type == 'user'"
+          ></app-user-query>
+          <app-bullet-summary [prompt]="prompt" *ngIf="prompt.type == 'ai'">
+          </app-bullet-summary>
+        </span>
+        <app-loader *ngIf="loader"></app-loader>
+        <!-- <div class="col-1 border-circle w-2rem h-2rem m-2 flex align-items-center justify-content-center bg-white border-solid surface-border" style="height: 30px;" >
+          <i class="pi pi-user" style="color: #708090"></i>
+      </div>
+      <div class="col-10 col-offset-1 border-round-2xl bg-blue-50 shadow-2" style="height: 100px;"></div> -->
+      </div>
+    </div>
+    <div class="col-12 flex relative" #messageTextarea>
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        matTooltip="Add Photos"
+        >add_photo_alternate</mat-icon
+      >
+      <textarea
+        class="inputText"
+        (keydown.enter)="onClickSend()"
+        (input)="onKeyEnter()"
+        placeholder="Chat to GenAI"
+        pInputTextarea
+        autosize
+        [minRows]="1"
+        [autoResize]="true"
+        (resized)="onResized($event)"
+        [(ngModel)]="userInput"
+      >
+      </textarea>
+      <mat-icon
+        class="mat-icon notranslate google-symbols mat-icon-no-color chatIcons"
+        (click)="onClickSend()"
+        [ngClass]="{ 'disabled-icon': !userInput }"
+        >send_spark</mat-icon
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<app-highchart-demo
+  *ngIf="type === 'chart' && (_infoDetails | json) != '{}'
+  && ((_infoDetails | json) != '{}'
+  && _infoDetails.chartType !== 'Scatter Plot')
+  "
+  [infoDetails]="_infoDetails"
+></app-highchart-demo>
+<app-scattered
+  *ngIf="type === 'chart'
+ 
+  && (_infoDetails | json) != '{}'
+  && _infoDetails.chartType === 'Scatter Plot'"
+  [infoDetails]="_infoDetails"
+></app-scattered>
+<app-info-table
+  *ngIf="type === 'table' && (_infoDetails | json) != '{}'"
+  class="flex align-items-center"
+  [tableDetails]="_infoDetails"
+></app-info-table>
+
